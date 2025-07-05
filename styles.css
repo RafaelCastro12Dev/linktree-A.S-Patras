@@ -314,13 +314,49 @@ html, body {
 /* Media queries no nível raiz */
 
 /* Mobile super pequenas (até 350px) */
+/* Mobile super pequenas (até 350px) */
 @media (max-width: 350px) {
-  .avatar-box { width: 80px; height: 80px; border-width: 2px; }
-  .link-btn { font-size: 0.86rem; padding: 7px 6px; border-radius: 8px; }
-  .carousel-image-box { width: 75px; height: 48px; border-radius: 6px; }
-  .bio-title { font-size: 0.87rem; }
-  .bio-sub { font-size: 0.78rem; }
+  .avatar-box {
+    width: 160px;
+    height: 160px;
+    border-width: 2px;
+  }
+  .link-btn {
+    max-width: 90vw;
+    font-size: 1rem;
+    padding: 7px 6px;
+    border-radius: 8px;
+  }
+  .carousel-image-box {
+    width: 100vw;       /* ocupa toda largura da viewport */
+    height: 200px;      /* mantém altura fixa */
+    border-radius: 6px;
+    overflow: hidden;   /* para bordas arredondadas */
+  }
+  .carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* cobre todo o container */
+    border-radius: 6px;
+  }
+  .bio-title {
+    font-size: 1.5rem;
+  }
+  .bio-sub {
+  font-size: 1rem;          /* diminua conforme desejar */
+  font-weight: 700;
+  padding: 10px 24px;          /* padding vertical e horizontal menores */
+  border-radius: 20px;        /* borda menos arredondada */
+  max-width: 300px;           /* um pouco menor */
+  box-shadow: 0 1px 6px #c3c6ce40, 0 0.5px 2px #fff7; /* sombras mais suaves */
+  letter-spacing: 1.2px;      /* leve redução do espaçamento das letras */
+  background: linear-gradient(90deg, #f8f8f8 0%, #d1dbe8 50%, #f8f8f8 100%);
+  border: 1.1px solid #e0e1e4;
+  color: #313743;
 }
+
+}
+
 
 /* Pequenos celulares (351px - 379px) */
 @media (min-width: 351px) and (max-width: 379px) {
