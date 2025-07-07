@@ -49,14 +49,14 @@ function resetInterval() {
   interval = setInterval(showNext, 5000);
 }
 
-// Garante que o carrossel começa na primeira imagem correta
+// Inicia o carrossel na primeira imagem
 updateCarousel(currentIdx);
 
 // --- Brilhos animados tipo estrela ---
 document.addEventListener('DOMContentLoaded', function() {
   var body = document.querySelector('.starshine');
   var template = document.querySelector('.template.shine');
-  var stars = 20; // Ajuste a quantidade aqui
+  var stars = 20; // Quantidade de brilhos
   var sparkle = 12;
 
   function createStar(size) {
@@ -113,19 +113,32 @@ const mainActions = document.getElementById('main-actions');
 const prataInfoSection = document.getElementById('prata-info-section');
 const prataBackBtn = document.getElementById('prata-back-btn');
 
-// Clicou em PRATA 925: fade out botões, fade in info
+// Ao clicar no botão PRATA 925: fade out botões, fade in texto explicativo
 prataBtn.addEventListener('click', function() {
   mainActions.classList.add('fade-out-left');
   setTimeout(() => {
     mainActions.classList.add('hide');
     prataInfoSection.style.display = 'flex';
+    prataInfoSection.classList.remove('fade-out-right-blur');
     prataInfoSection.classList.add('fade-in-right-blur');
-  }, 600); // igual tempo da animação do fade-out
+  }, 600);
 });
 
-// Botão voltar: fade out info, fade in botões
+// Ao clicar no botão Voltar: fade out texto explicativo, fade in botões com efeito
 prataBackBtn.addEventListener('click', function() {
   prataInfoSection.classList.remove('fade-in-right-blur');
-  prataInfoSection.style.display = 'none';
-  mainActions.classList.remove('hide', 'fade-out-left');
+  prataInfoSection.classList.add('fade-out-right-blur');
+  setTimeout(() => {
+    prataInfoSection.style.display = 'none';
+    prataInfoSection.classList.remove('fade-out-right-blur');
+
+    // Mostra os botões com fade-in da esquerda
+    mainActions.classList.remove('hide', 'fade-out-left', 'fade-in-left');
+    mainActions.style.opacity = '0'; // começa invisível
+    mainActions.classList.add('fade-in-left');
+    setTimeout(() => {
+      mainActions.style.opacity = '';
+      mainActions.classList.remove('fade-in-left');
+    }, 700); // tempo da animação
+  }, 700);
 });

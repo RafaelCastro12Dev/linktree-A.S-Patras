@@ -391,6 +391,23 @@ html, body {
   display: none !important;
 }
 
+@keyframes fadeOutRightBlur {
+  from { opacity: 1; filter: blur(0); transform: translateX(0);}
+  to   { opacity: 0; filter: blur(16px); transform: translateX(120px);}
+}
+.fade-out-right-blur {
+  animation: fadeOutRightBlur 0.7s forwards;
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-80px);}
+  to   { opacity: 1; transform: translateX(0);}
+}
+.fade-in-left {
+  animation: fadeInLeft 0.7s forwards;
+}
+
+
 /* ----------- Media Queries (mantive suas originais) ----------- */
 /* Mobile super pequenas (até 350px) */
 @media (max-width: 350px) {
