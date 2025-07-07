@@ -507,12 +507,20 @@ html, body {
 /* Desktop e telas grandes */
 @media (min-width: 700px) {
   .icon-left svg, .icon-right svg { width: 32px !important; height: 32px !important; }
-  .avatar-box { width: 450px; height: 450px; border-width: 14px; margin-bottom: 64px; }
+  .avatar-box { width: 400px; height: 400px; border-width: 14px; margin-bottom: 64px; }
   .buttons-section { gap: 48px; margin-bottom: 60px; }
   .link-btn { font-size: 2.6rem; max-width: 700px; border-radius: 48px; padding: 22px 60px; }
   .carousel-image-box { width: 520px; height: 340px; border-radius: 48px; }
   .carousel-img { border-radius: 48px; }
   .bio-title { font-size: 4.5rem; }
+    .prata-info-content {
+    max-width: 400px;
+    padding: 38px 30px 28px 30px;
+  }
+  .prata-info-text {
+    font-size: 1.5rem;
+    line-height: 1.7;
+  }
 
 }
 
@@ -612,6 +620,14 @@ html, body {
     margin-top: 26px;
     margin-bottom: 14px;
   }
+  .prata-info-content {
+    max-width: 450px;
+    padding: 38px 30px 28px 30px;
+  }
+  .prata-info-text {
+    font-size: 1.6rem;
+    line-height: 1.7;
+  }
 }
 @media (min-width: 1024px) and (max-width: 1030px) {
   .container {
@@ -653,6 +669,14 @@ html, body {
     font-size: 3.5rem;
     margin-top: 42px;
     margin-bottom: 18px;
+  }
+    .prata-info-content {
+    max-width: 500px;
+    padding: 38px 30px 28px 30px;
+  }
+  .prata-info-text {
+    font-size: 1.9rem;
+    line-height: 1.7;
   }
 }
 
