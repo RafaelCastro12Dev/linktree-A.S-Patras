@@ -56,7 +56,7 @@ updateCarousel(currentIdx);
 document.addEventListener('DOMContentLoaded', function() {
   var body = document.querySelector('.starshine');
   var template = document.querySelector('.template.shine');
-  var stars = 20; // Ajuste a quantidade aqui (pode ser 18, 24, 30, 40 etc)
+  var stars = 20; // Ajuste a quantidade aqui
   var sparkle = 12;
 
   function createStar(size) {
@@ -80,4 +80,52 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     createStar(size);
   }
+});
+
+// --------------- BLOQUEIO DE DOUBLE-CLICK E DOUBLE-TAP GLOBAL (ANTI ZOOM) ---------------
+
+// Bloqueia double-click em qualquer lugar
+document.addEventListener('dblclick', function(e) {
+  e.preventDefault();
+  return false;
+}, { passive: false });
+
+// Bloqueia zoom de duplo-toque (double-tap) mobile
+let lastTouch = 0;
+document.addEventListener('touchend', function(e) {
+  const now = Date.now();
+  if (now - lastTouch <= 350) {
+    e.preventDefault();
+    return false;
+  }
+  lastTouch = now;
+}, { passive: false });
+
+// Impede gestos de pinça (zoom) mobile
+document.addEventListener('gesturestart', function(e) {
+  e.preventDefault();
+}, { passive: false });
+
+// --------------- PRATA 925 ANIMAÇÃO E TRANSIÇÃO ---------------
+
+const prataBtn = document.getElementById('prata-btn');
+const mainActions = document.getElementById('main-actions');
+const prataInfoSection = document.getElementById('prata-info-section');
+const prataBackBtn = document.getElementById('prata-back-btn');
+
+// Clicou em PRATA 925: fade out botões, fade in info
+prataBtn.addEventListener('click', function() {
+  mainActions.classList.add('fade-out-left');
+  setTimeout(() => {
+    mainActions.classList.add('hide');
+    prataInfoSection.style.display = 'flex';
+    prataInfoSection.classList.add('fade-in-right-blur');
+  }, 600); // igual tempo da animação do fade-out
+});
+
+// Botão voltar: fade out info, fade in botões
+prataBackBtn.addEventListener('click', function() {
+  prataInfoSection.classList.remove('fade-in-right-blur');
+  prataInfoSection.style.display = 'none';
+  mainActions.classList.remove('hide', 'fade-out-left');
 });
